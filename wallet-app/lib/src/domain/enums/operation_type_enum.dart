@@ -1,0 +1,4 @@
+enum OperationTypeEnum {
+  incomes,
+  expenses,
+}
