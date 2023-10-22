@@ -3,21 +3,29 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 // Domain
-import { IUserRepository } from 'src/domain/';
+import { IAccountRepository, IUserRepository } from 'src/domain/';
 
 // Infrastructure
 import { PostgresConfigModule } from './config';
-import { PostgresUser } from './models';
-import { PostgresUserRepository } from './repositories';
+import { PostgresAccount, PostgresUser } from './models';
+import { PostgresAccountRepository, PostgresUserRepository } from './repositories';
 
 @Module({
-  imports: [PostgresConfigModule, TypeOrmModule.forFeature([PostgresUser])],
+  imports: [
+    PostgresConfigModule,
+    TypeOrmModule.forFeature([PostgresUser]),
+    TypeOrmModule.forFeature([PostgresAccount]),
+  ],
   providers: [
     {
       provide: IUserRepository,
       useClass: PostgresUserRepository,
     },
+    {
+      provide: IAccountRepository,
+      useClass: PostgresAccountRepository,
+    },
   ],
-  exports: [IUserRepository],
+  exports: [IUserRepository, IAccountRepository],
 })
 export class PostgresDataProviderModule {}

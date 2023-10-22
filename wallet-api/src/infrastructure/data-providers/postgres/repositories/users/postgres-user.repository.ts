@@ -6,12 +6,14 @@ import { Repository } from 'typeorm';
 
 // Domain
 import { IUserRepository, User } from 'src/domain';
+
+// Infrastructure
 import { PostgresUser } from '../../models';
 
 export class PostgresUserRepository implements IUserRepository {
   constructor(
     @InjectRepository(PostgresUser)
-    private readonly usersRepository: Repository<PostgresUser>,
+    private readonly usersRepository: Repository<User>,
   ) {}
 
   async findByEmail(email: string): Promise<User> {

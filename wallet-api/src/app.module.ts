@@ -11,7 +11,7 @@ import {
 } from './infrastructure';
 
 // Presentation
-import { UsersModule } from './presentation';
+import { AccountsModule, UsersModule } from './presentation';
 
 @Module({
   imports: [
@@ -24,6 +24,7 @@ import { UsersModule } from './presentation';
     ExceptionsModule,
     DataProvidersModule,
     UsersModule,
+    AccountsModule,
   ],
   controllers: [],
   providers: [],
