@@ -2,6 +2,7 @@ import { USER_ROLES_ENUM, USER_STATUS_ENUM } from 'src/domain/enums';
 import { Base } from '../base/base.model';
 
 export class User extends Base {
+  static route = 'users';
   static modelName = 'user';
   constructor() {
     super();

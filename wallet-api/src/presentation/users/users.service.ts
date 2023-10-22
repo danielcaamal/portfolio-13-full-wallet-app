@@ -10,10 +10,7 @@ import { CreateUserDto } from './dtos';
 
 @Injectable()
 export class UsersService {
-  constructor(
-    private readonly usersUseCases: UsersUseCases,
-    private readonly authUseCases: AuthUseCases,
-  ) {}
+  constructor(private readonly usersUseCases: UsersUseCases) {}
 
   findAll = async (): Promise<UserPresenter[]> => {
     return (await this.usersUseCases.findAll()).map(
@@ -22,16 +19,10 @@ export class UsersService {
   };
 
   create = async (createUser: CreateUserDto): Promise<UserPresenter> => {
-    const userExists = await this.usersUseCases.findByEmail(createUser.email);
-    if (userExists) {
-      throw new ConflictException('User already exists');
-    }
-    const hashedPassword = await this.authUseCases.hashPassword(
-      createUser.password,
+    return new UserPresenter(
+      await this.usersUseCases.create(
+        CreateUserDto.createUserDtoToUser(createUser),
+      ),
     );
-    delete createUser.password;
-    const newUser = CreateUserDto.createUserDtoToUser(createUser);
-    newUser.password = hashedPassword;
-    return new UserPresenter(await this.usersUseCases.create(newUser));
   };
 }

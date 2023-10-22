@@ -1,8 +1,8 @@
 // Framework
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 
 // Domain
-import { IAccountRepository, Account } from 'src/domain';
+import { IAccountRepository, Account, User } from 'src/domain';
 
 // Use-cases
 import { IAccountUseCases } from 'src/use-cases';
@@ -13,5 +13,17 @@ export class AccountsUseCases implements IAccountUseCases {
 
   async findAll(): Promise<Account[]> {
     return await this.accountRepository.findAll();
+  }
+
+  async findAllByUser(user: string): Promise<Account[]> {
+    return await this.accountRepository.findAllByUser(user);
+  }
+
+  async createFromUser(account: Account, user: User): Promise<Account> {
+    if (!user) {
+      throw new InternalServerErrorException('createFromUser - User not found');
+    }
+    account.user = user;
+    return await this.accountRepository.create(account);
   }
 }

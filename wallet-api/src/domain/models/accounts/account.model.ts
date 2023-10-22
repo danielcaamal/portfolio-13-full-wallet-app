@@ -12,6 +12,7 @@ import { Base } from '../base/base.model';
 import { User } from '../users';
 
 export class Account extends Base {
+  static route = 'accounts';
   static modelName = 'account';
   _id?: string;
   description: string;

@@ -1,5 +1,11 @@
 // External
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 // Domain
 import { Account, User } from 'src/domain';
@@ -31,7 +37,10 @@ export class PostgresAccount implements Account {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   updatedAt: Date;
 
-  @ManyToOne(() => PostgresUser, (User) => User.account, { cascade: true })
+  @ManyToOne(() => PostgresUser, (User) => User.account, {
+    cascade: true,
+    nullable: false,
+  })
   @JoinColumn()
   user: User;
 }

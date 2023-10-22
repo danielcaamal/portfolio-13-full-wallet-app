@@ -12,8 +12,8 @@ import { UsersService } from './users.service';
 import { UserPresenter } from './presenters';
 import { CreateUserDto } from './dtos';
 
-@Controller(User.name.toLowerCase())
-@ControllerSwagger(User.name)
+@Controller(User.route.toLowerCase())
+@ControllerSwagger(User.route)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {
     //
@@ -34,9 +34,7 @@ export class UsersController {
     description: 'Create a new user',
     summary: 'Create a new user',
   })
-  async createUser(
-    @Body() createUser: CreateUserDto,
-  ): Promise<UserPresenter> {
+  async createUser(@Body() createUser: CreateUserDto): Promise<UserPresenter> {
     const user = await this.usersService.create(createUser);
     return user;
   }

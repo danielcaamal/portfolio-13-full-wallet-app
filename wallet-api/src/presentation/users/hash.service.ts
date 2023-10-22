@@ -9,8 +9,6 @@ export class HashService {
   constructor() {}
 
   hashPassword = async (password: string): Promise<string> => {
-    console.log('Hashing password');
-    console.log(password);
     return bcrypt.hash(password, 10);
   };
 }
