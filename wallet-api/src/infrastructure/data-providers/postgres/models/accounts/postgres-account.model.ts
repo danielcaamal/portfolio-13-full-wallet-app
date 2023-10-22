@@ -5,7 +5,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 't
 import { Account, User } from 'src/domain';
 import { PostgresUser } from '../users';
 
-@Entity({ name: 'users' })
+@Entity({ name: 'accounts' })
 export class PostgresAccount implements Account {
   @PrimaryGeneratedColumn('uuid', { name: '_id' })
   _id?: string;

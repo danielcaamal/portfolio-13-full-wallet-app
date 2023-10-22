@@ -3,6 +3,10 @@ import { Base } from '../base/base.model';
 
 export class User extends Base {
   static modelName = 'user';
+  constructor() {
+    super();
+  }
+
   _id?: string;
   firstName: string;
   lastName: string;

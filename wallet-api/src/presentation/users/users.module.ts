@@ -7,11 +7,12 @@ import { DataProvidersModule } from 'src/infrastructure';
 // Presentation
 import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
-import { UsersUseCases } from './use-cases';
+import { AuthUseCases, UsersUseCases } from './use-cases';
+import { HashService } from './hash.service';
 
 @Module({
   controllers: [UsersController],
-  providers: [UsersUseCases, UsersService],
+  providers: [UsersUseCases, AuthUseCases, UsersService, HashService],
   imports: [DataProvidersModule],
 })
 export class UsersModule {}

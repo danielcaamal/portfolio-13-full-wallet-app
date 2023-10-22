@@ -1,1 +1,1 @@
-export * from './accounts.user-cases';
+export * from './accounts.use-cases';

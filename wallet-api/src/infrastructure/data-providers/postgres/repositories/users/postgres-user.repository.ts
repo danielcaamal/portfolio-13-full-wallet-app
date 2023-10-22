@@ -26,7 +26,7 @@ export class PostgresUserRepository implements IUserRepository {
     return await this.usersRepository.findOneBy({ _id: id });
   }
   async create(item: User): Promise<User> {
-    return await this.usersRepository.create(item);
+    return await this.usersRepository.save(item);
   }
   async update(id: string, item: Partial<User>) {
     return this.usersRepository.update(id, item);

@@ -2,7 +2,7 @@
 import { Injectable } from '@nestjs/common';
 
 // Use-cases
-import { AccountsUseCases } from './use-cases/accounts.use-cases';
+import { AccountsUseCases } from './use-cases';
 
 // Presentation
 import { AccountPresenter } from './presenters';
