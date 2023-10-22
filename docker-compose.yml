@@ -7,5 +7,7 @@ services:
       - '5432:5432'
     volumes: 
       - ./db:/var/lib/postgresql/data
-    env_file:
-      - ./wallet-app-api/.env
+    environment:
+      - POSTGRES_USER=wallet-user
+      - POSTGRES_PASSWORD=wallet-password
+      - POSTGRES_DB=wallet-db
