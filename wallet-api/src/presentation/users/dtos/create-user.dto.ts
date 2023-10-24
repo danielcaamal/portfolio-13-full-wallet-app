@@ -64,6 +64,7 @@ export class CreateUserDto {
       loginCodeExpiration: '',
       updatedAt: new Date(),
       createdAt: new Date(),
+      isActive: true,
     };
   };
 }

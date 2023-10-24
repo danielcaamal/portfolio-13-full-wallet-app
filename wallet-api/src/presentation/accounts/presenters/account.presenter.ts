@@ -23,6 +23,21 @@ export class AccountPresenter {
   @PresenterSwagger({ required: true, description: 'Account user' })
   user: string;
 
+  @PresenterSwagger({ required: true, description: 'Account is active' })
+  isActive: boolean;
+
+  @PresenterSwagger({ required: true, description: 'Account created at' })
+  createdAt: Date;
+
+  @PresenterSwagger({ required: true, description: 'Account updated at' })
+  updatedAt: Date;
+
+  @PresenterSwagger({
+    required: true,
+    description: 'Account include in balance',
+  })
+  includeInBalance: boolean;
+
   constructor(account: Account) {
     this._id = account._id;
     this.description = account.description;
@@ -30,5 +45,9 @@ export class AccountPresenter {
     this.color = account.color;
     this.icon = account.icon;
     this.user = account.user._id;
+    this.isActive = account.isActive;
+    this.createdAt = account.createdAt;
+    this.updatedAt = account.updatedAt;
+    this.includeInBalance = account.includeInBalance;
   }
 }

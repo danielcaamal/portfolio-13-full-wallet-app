@@ -37,7 +37,7 @@ export class AccountsController {
   // TODO: Add get the user id from token
   async findAllAccountsByUser(): Promise<AccountPresenter[]> {
     const accounts = await this.accountsService.findAllByUser(
-      'f36b2e0b-5802-413d-9548-7d8afa20e932',
+      'b364f159-6f35-438d-8fec-6d70ab3500fd',
     );
     return accounts;
   }
@@ -52,7 +52,7 @@ export class AccountsController {
     // TODO: @GetUser() userFromToken: User,
   ): Promise<AccountPresenter> {
     const accounts = await this.accountsService.create(createAccountDto, {
-      _id: 'f36b2e0b-5802-413d-9548-7d8afa20e932',
+      _id: 'b364f159-6f35-438d-8fec-6d70ab3500fd',
     } as any);
     return accounts;
   }

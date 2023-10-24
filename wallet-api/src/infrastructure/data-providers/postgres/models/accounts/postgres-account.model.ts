@@ -43,4 +43,7 @@ export class PostgresAccount implements Account {
   })
   @JoinColumn()
   user: User;
+
+  @Column({ nullable: false, default: true, type: 'boolean' })
+  isActive: boolean;
 }

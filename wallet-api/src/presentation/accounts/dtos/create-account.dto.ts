@@ -37,7 +37,8 @@ export class CreateAccountDto {
       icon: account.icon,
       includeInBalance: account.includeInBalance,
       updatedAt: new Date(),
-      user: undefined
+      user: undefined,
+      isActive: true,
     };
   };
 }

@@ -4,7 +4,7 @@ import 'base.dart';
 
 class Account extends Base {
   final String userId;
-  final String netIncomeId;
+  final String? netIncomeId;
   final String description;
   final double amount;
   final String icon;
@@ -19,12 +19,12 @@ class Account extends Base {
       required super.updatedAt,
       required super.isActive,
       required this.userId,
-      required this.netIncomeId,
       required this.description,
       required this.amount,
       required this.icon,
       required this.color,
       required this.includeInBalance,
+      this.netIncomeId,
       this.lastTransactionId,
       this.lastTransaction});
 }
