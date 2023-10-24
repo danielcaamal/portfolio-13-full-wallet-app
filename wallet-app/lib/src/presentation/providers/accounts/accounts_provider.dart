@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wallet_app/src/domain/domain.dart';
 import 'package:wallet_app/src/infrastructure/infrastructure.dart';
 
-final movieRepositoryProvider = Provider<AccountsRepository>((ref) {
+final accountRepositoryProvider = Provider<AccountsRepository>((ref) {
   return AccountsRepositoryImpl(dataSource: AccountApiDataSource());
 });
 
@@ -17,3 +17,10 @@ class AccountsNotifier extends StateNotifier<List<Account>> {
     state = result;
   }
 }
+
+
+final accountsProvider =
+    StateNotifierProvider<AccountsNotifier, List<Account>>((ref) {
+  final accountRepository = ref.watch(accountRepositoryProvider);
+  return AccountsNotifier(movieCallBack: accountRepository);
+});

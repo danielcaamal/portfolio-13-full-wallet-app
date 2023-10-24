@@ -16,6 +16,6 @@ class HumanFormats {
     if (hexColor == null) {
       return Colors.transparent;
     }
-    return Color(int.parse(hexColor.substring(2, 8), radix: 16) + 0xFF000000);
+    return Color(int.parse(hexColor.substring(1, 7), radix: 16) + 0xFF000000);
   }
 }

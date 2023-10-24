@@ -6,14 +6,14 @@ import 'package:wallet_app/src/infrastructure/infrastructure.dart';
 class AccountApiDataSource extends AccountDataSource {
   final dio = Dio(BaseOptions(
     baseUrl: Environment.WALLET_API_V1,
+    
   ));
 
   @override
   Future<List<Account>> getAccounts() async {
     final response = await dio.get('/accounts/by-user');
     if (response.statusCode == 200) {
-      final data = response.data['result'];
-      final castData = AccountsApiResponse.fromJson(data);
+      final castData = AccountsApiResponse.fromJson(response.data);
       return AccountsMapper.accountsApiResponseToAccount(castData);
     }
     // TODO: Implement exception

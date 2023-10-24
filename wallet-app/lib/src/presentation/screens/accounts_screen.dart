@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wallet_app/src/domain/domain.dart';
 import 'package:wallet_app/src/presentation/presentation.dart';
 import 'package:wallet_app/src/presentation/utils/utils.dart';
@@ -20,12 +21,23 @@ class AccountsScreen extends StatelessWidget {
   }
 }
 
-class _AccountsContent extends StatelessWidget {
+class _AccountsContent extends ConsumerStatefulWidget {
   const _AccountsContent({super.key});
 
   @override
+  ConsumerState<_AccountsContent> createState() => _AccountsContentState();
+}
+
+class _AccountsContentState extends ConsumerState<_AccountsContent> {
+  @override
+  void initState() {
+    super.initState();
+    ref.read(accountsProvider.notifier).loadAccounts();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final List<Account> accounts = MockValues.getMockAccounts();
+    final accounts = ref.watch(accountsProvider);
 
     return Column(
       children: [

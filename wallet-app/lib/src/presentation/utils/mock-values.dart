@@ -8,7 +8,7 @@ class MockValues {
   static Account GetMockAccountDetailById(String id) {
     return Account(
       id: '0001',
-      color: '0xFF0000',
+      color: '#FFFFFF',
       description: 'Account 1',
       isActive: true,
       createdAt: DateTime.now(),
@@ -27,7 +27,7 @@ class MockValues {
     return [
       Account(
         id: '0001',
-        color: '0xFFFF00',
+        color: '#FFFFFF',
         description: 'Account 1',
         isActive: true,
         createdAt: DateTime.now(),
@@ -41,7 +41,7 @@ class MockValues {
       ),
       Account(
         id: '0001',
-        color: '0x00FF00',
+        color: '#FFFFFF',
         description: 'Account 2',
         isActive: true,
         createdAt: DateTime.now(),
@@ -68,7 +68,7 @@ class MockValues {
           accountId: '0001',
           account: Account(
             id: '0001',
-            color: '0xFFFF00',
+            color: '#FFFFFF',
             description: 'Account 1',
             isActive: true,
             createdAt: DateTime.now(),
@@ -82,7 +82,7 @@ class MockValues {
           ),
           categoryId: '0001',
           category: Category(
-            color: '0xFF00FF',
+            color: '#FFFFFF',
             description: 'Category 1',
             id: '0001',
             isActive: true,
@@ -111,7 +111,7 @@ class MockValues {
           accountId: '0001',
           account: Account(
             id: '0001',
-            color: '0x00FF00',
+            color: '#FFFFFF',
             description: 'Account 2',
             isActive: true,
             createdAt: DateTime.now(),
@@ -125,7 +125,7 @@ class MockValues {
           ),
           categoryId: '0001',
           category: Category(
-            color: '0x00FFFF',
+            color: '#FFFFFF',
             description: 'Category 2',
             id: '0001',
             isActive: true,
@@ -159,7 +159,7 @@ class MockValues {
           accountDestinationId: "0001",
           accountSource: Account(
             id: '0001',
-            color: '0xFFFF00',
+            color: '#FFFFFF',
             description: 'Account 1',
             isActive: true,
             createdAt: DateTime.now(),
@@ -173,7 +173,7 @@ class MockValues {
           ),
           accountDestination: Account(
             id: '0001',
-            color: '0x00FF00',
+            color: '#FFFFFF',
             description: 'Account 2',
             isActive: true,
             createdAt: DateTime.now(),
@@ -199,7 +199,7 @@ class MockValues {
           accountDestinationId: "0001",
           accountDestination: Account(
             id: '0001',
-            color: '0xFFFF00',
+            color: '#FFFFFF',
             description: 'Account 1',
             isActive: true,
             createdAt: DateTime.now(),
@@ -213,7 +213,7 @@ class MockValues {
           ),
           accountSource: Account(
             id: '0001',
-            color: '0x00FF00',
+            color: '#FFFFFF',
             description: 'Account 2',
             isActive: true,
             createdAt: DateTime.now(),
