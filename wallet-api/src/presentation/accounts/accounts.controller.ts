@@ -9,7 +9,7 @@ import { ControllerSwagger, ServiceSwagger } from 'src/infrastructure';
 
 // Presentation
 import { AccountsService } from './accounts.service';
-import { AccountPresenter } from './presenters';
+import { AccountPresenter, AccountTotalBalancePresenter } from './presenters';
 import { CreateAccountDto } from './dtos';
 
 @Controller(Account.route.toLowerCase())
@@ -63,10 +63,10 @@ export class AccountsController {
     summary: 'Get total balance by user',
   })
   // TODO: @GetUser() userFromToken: User,
-  async getTotalBalanceByUser(): Promise<Number> {
-    const total = await this.accountsService.getTotalBalanceByUser({
+  async getTotalBalanceByUser(): Promise<AccountTotalBalancePresenter> {
+    const totalBalance = await this.accountsService.getTotalBalanceByUser({
       _id: 'b364f159-6f35-438d-8fec-6d70ab3500fd',
     } as User);
-    return total;
+    return totalBalance;
   }
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:wallet_app/src/domain/domain.dart';
 import 'package:wallet_app/src/presentation/presentation.dart';
-import 'package:wallet_app/src/presentation/utils/utils.dart';
 
 class AccountsScreen extends StatelessWidget {
   static const name = 'accounts';
@@ -41,7 +39,7 @@ class _AccountsContentState extends ConsumerState<_AccountsContent> {
 
     return Column(
       children: [
-        const TotalBalanceCardItem(total: 15000),
+        const TotalBalanceCardItem(),
         CardItem(
           child: AccountsListView(
             accounts: accounts,

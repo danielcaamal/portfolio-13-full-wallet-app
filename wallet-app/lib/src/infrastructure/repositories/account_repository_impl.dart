@@ -8,4 +8,9 @@ class AccountsRepositoryImpl extends AccountsRepository {
   Future<List<Account>> getAccounts() async {
     return await dataSource.getAccounts();
   }
+  
+  @override
+  Future<double> getTotalBalance() async {
+    return await dataSource.getTotalBalance();
+  }
 }

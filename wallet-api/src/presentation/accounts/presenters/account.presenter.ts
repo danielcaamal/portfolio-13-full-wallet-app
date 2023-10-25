@@ -1,5 +1,5 @@
 // Domain
-import { Account, User } from 'src/domain';
+import { Account } from 'src/domain';
 
 // Infrastructure
 import { PresenterSwagger } from 'src/infrastructure';

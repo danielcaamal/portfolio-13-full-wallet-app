@@ -16,11 +16,14 @@ export class PostgresAccountRepository implements IAccountRepository {
     private readonly accountsRepository: Repository<Account>,
   ) {}
   async getTotalBalanceByUser(user: string): Promise<number> {
-    return await this.accountsRepository
+    const result = await this.accountsRepository
       .createQueryBuilder('account')
-      .where('account.user = :user AND account.includeInBalance = TRUE', { user })
+      .where('account.user = :user AND account.includeInBalance = TRUE', {
+        user,
+      })
       .select('SUM(account.amount)', 'total')
       .getRawOne();
+    return result?.total || 0;
   }
 
   async findAll(): Promise<Account[]> {

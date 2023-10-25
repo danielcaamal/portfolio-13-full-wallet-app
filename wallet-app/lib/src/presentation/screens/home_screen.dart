@@ -34,9 +34,7 @@ class _HomeContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TotalBalanceCardItem(
-          total: totalBalance,
-        ),
+        const TotalBalanceCardItem(),
         const CardItem(
           title: 'Portfolio',
           child: PortfolioCharts(),

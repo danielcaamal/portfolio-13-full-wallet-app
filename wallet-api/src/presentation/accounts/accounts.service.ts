@@ -5,7 +5,7 @@ import { Injectable } from '@nestjs/common';
 import { AccountsUseCases } from './use-cases';
 
 // Presentation
-import { AccountPresenter } from './presenters';
+import { AccountPresenter, AccountTotalBalancePresenter } from './presenters';
 import { CreateAccountDto } from './dtos';
 import { User } from 'src/domain';
 
@@ -37,7 +37,11 @@ export class AccountsService {
     );
   };
 
-  getTotalBalanceByUser = async (user: User): Promise<number> => {
-    return await this.accountsUseCases.getTotalBalanceByUser(user);
+  getTotalBalanceByUser = async (
+    user: User,
+  ): Promise<AccountTotalBalancePresenter> => {
+    return new AccountTotalBalancePresenter(
+      await this.accountsUseCases.getTotalBalanceByUser(user),
+    );
   };
 }

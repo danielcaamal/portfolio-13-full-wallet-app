@@ -10,7 +10,7 @@ String accountsApiResponseToJson(AccountsApiResponse data) => json.encode(data.t
 
 class AccountsApiResponse {
     final String id;
-    final List<Result> result;
+    final List<AccountsApiResponseResult> result;
     final DateTime timestamp;
     final bool done;
 
@@ -23,7 +23,7 @@ class AccountsApiResponse {
 
     factory AccountsApiResponse.fromJson(Map<String, dynamic> json) => AccountsApiResponse(
         id: json["id"],
-        result: List<Result>.from(json["result"].map((x) => Result.fromJson(x))),
+        result: List<AccountsApiResponseResult>.from(json["result"].map((x) => AccountsApiResponseResult.fromJson(x))),
         timestamp: DateTime.parse(json["timestamp"]),
         done: json["done"],
     );
@@ -36,7 +36,7 @@ class AccountsApiResponse {
     };
 }
 
-class Result {
+class AccountsApiResponseResult {
     final String id;
     final String description;
     final String amount;
@@ -48,7 +48,7 @@ class Result {
     final DateTime updatedAt;
     final bool includeInBalance;
 
-    Result({
+    AccountsApiResponseResult({
         required this.id,
         required this.description,
         required this.amount,
@@ -61,7 +61,7 @@ class Result {
         required this.includeInBalance,
     });
 
-    factory Result.fromJson(Map<String, dynamic> json) => Result(
+    factory AccountsApiResponseResult.fromJson(Map<String, dynamic> json) => AccountsApiResponseResult(
         id: json["_id"],
         description: json["description"],
         amount: json["amount"],
