@@ -36,4 +36,8 @@ export class AccountsService {
       ),
     );
   };
+
+  getTotalBalanceByUser = async (user: User): Promise<number> => {
+    return await this.accountsUseCases.getTotalBalanceByUser(user);
+  };
 }

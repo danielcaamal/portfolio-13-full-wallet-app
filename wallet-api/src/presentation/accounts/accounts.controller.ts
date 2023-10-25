@@ -2,7 +2,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 
 // Domain
-import { Account } from 'src/domain';
+import { Account, User } from 'src/domain';
 
 // Infrastructure
 import { ControllerSwagger, ServiceSwagger } from 'src/infrastructure';
@@ -53,7 +53,20 @@ export class AccountsController {
   ): Promise<AccountPresenter> {
     const accounts = await this.accountsService.create(createAccountDto, {
       _id: 'b364f159-6f35-438d-8fec-6d70ab3500fd',
-    } as any);
+    } as User);
     return accounts;
+  }
+
+  @Get('total-balance/by-user')
+  @ServiceSwagger([AccountPresenter], {
+    description: 'Get total balance by user',
+    summary: 'Get total balance by user',
+  })
+  // TODO: @GetUser() userFromToken: User,
+  async getTotalBalanceByUser(): Promise<Number> {
+    const total = await this.accountsService.getTotalBalanceByUser({
+      _id: 'b364f159-6f35-438d-8fec-6d70ab3500fd',
+    } as User);
+    return total;
   }
 }

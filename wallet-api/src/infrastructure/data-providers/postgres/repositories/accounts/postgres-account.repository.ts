@@ -15,6 +15,13 @@ export class PostgresAccountRepository implements IAccountRepository {
     @InjectRepository(PostgresAccount)
     private readonly accountsRepository: Repository<Account>,
   ) {}
+  async getTotalBalanceByUser(user: string): Promise<number> {
+    return await this.accountsRepository
+      .createQueryBuilder('account')
+      .where('account.user = :user AND account.includeInBalance = TRUE', { user })
+      .select('SUM(account.amount)', 'total')
+      .getRawOne();
+  }
 
   async findAll(): Promise<Account[]> {
     return await this.accountsRepository.find({

@@ -26,4 +26,11 @@ export class AccountsUseCases implements IAccountUseCases {
     account.user = user;
     return await this.accountRepository.create(account);
   }
+
+  async getTotalBalanceByUser(user: User): Promise<number> {
+    if (!user) {
+      throw new InternalServerErrorException('getTotalBalanceByUser - User not found');
+    }
+    return await this.accountRepository.getTotalBalanceByUser(user._id);
+  }
 }
