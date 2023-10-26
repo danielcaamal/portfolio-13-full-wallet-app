@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:wallet_app/src/domain/domain.dart';
-import 'package:wallet_app/src/presentation/utils/human_formats.dart';
+import 'package:wallet_app/src/presentation/presentation.dart';
 
 class TransfersSlideShow extends StatelessWidget {
   final List<Transfer> transfers;

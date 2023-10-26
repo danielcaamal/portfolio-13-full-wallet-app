@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wallet_app/src/domain/domain.dart';
 import 'package:wallet_app/src/presentation/presentation.dart';
-import 'package:wallet_app/src/presentation/utils/human_formats.dart';
-import 'package:wallet_app/src/presentation/utils/mock-values.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
-class AccountScreen extends StatelessWidget {
+class AccountScreen extends ConsumerStatefulWidget {
   static const name = 'account';
   static const route = 'account';
   final String id;
@@ -16,8 +15,28 @@ class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key, required this.id});
 
   @override
+  ConsumerState<AccountScreen> createState() => _AccountScreenState();
+}
+
+class _AccountScreenState extends ConsumerState<AccountScreen> {
+  @override
+  void initState() {
+    super.initState();
+    ref.read(accountDetailProvider.notifier).loadAccount(widget.id);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final account = MockValues.GetMockAccountDetailById(id);
+    final account = ref.watch(accountDetailProvider);
+
+    if (account == null) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Row(

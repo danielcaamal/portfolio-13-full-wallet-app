@@ -30,4 +30,15 @@ class AccountApiDataSource extends AccountDataSource {
     // TODO: Implement exception
     return 0;
   }
+
+  @override
+  Future<Account?> getAccountById(String accountId) async {
+    final response = await dio.get('/accounts/by-user/$accountId');
+    if (response.statusCode == 200) {
+      final castData = AccountDetailApiResponse.fromJson(response.data);
+      return AccountsMapper.accountDetailApiResponseToAccount(castData);
+    }
+    // TODO: Implement exception
+    return null;
+  }
 }

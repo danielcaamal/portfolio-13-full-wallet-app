@@ -1,5 +1,12 @@
 // Framework
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  ParseUUIDPipe,
+  Post,
+} from '@nestjs/common';
 
 // Domain
 import { Account, User } from 'src/domain';
@@ -37,6 +44,22 @@ export class AccountsController {
   // TODO: Add get the user id from token
   async findAllAccountsByUser(): Promise<AccountPresenter[]> {
     const accounts = await this.accountsService.findAllByUser(
+      'b364f159-6f35-438d-8fec-6d70ab3500fd',
+    );
+    return accounts;
+  }
+
+  @Get('by-user/:id')
+  @ServiceSwagger([AccountPresenter], {
+    description: 'Find one account',
+    summary: 'Find one account',
+  })
+  // TODO: Add get the user id from token
+  async findOneAccount(
+    @Param('id', ParseUUIDPipe) id: string,
+  ): Promise<AccountPresenter> {
+    const accounts = await this.accountsService.findOneByUser(
+      id,
       'b364f159-6f35-438d-8fec-6d70ab3500fd',
     );
     return accounts;

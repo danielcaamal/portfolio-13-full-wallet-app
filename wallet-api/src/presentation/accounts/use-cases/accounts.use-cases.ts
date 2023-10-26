@@ -19,6 +19,10 @@ export class AccountsUseCases implements IAccountUseCases {
     return await this.accountRepository.findAllByUser(user);
   }
 
+  async findOneByUser(account: string, user: string): Promise<Account> {
+    return await this.accountRepository.findOneByUser(account, user);
+  }
+
   async createFromUser(account: Account, user: User): Promise<Account> {
     if (!user) {
       throw new InternalServerErrorException('createFromUser - User not found');
@@ -29,7 +33,9 @@ export class AccountsUseCases implements IAccountUseCases {
 
   async getTotalBalanceByUser(user: User): Promise<number> {
     if (!user) {
-      throw new InternalServerErrorException('getTotalBalanceByUser - User not found');
+      throw new InternalServerErrorException(
+        'getTotalBalanceByUser - User not found',
+      );
     }
     return await this.accountRepository.getTotalBalanceByUser(user._id);
   }

@@ -19,4 +19,19 @@ class AccountsMapper {
             ))
         .toList();
   }
+
+  static Account accountDetailApiResponseToAccount(
+      AccountDetailApiResponse accountDetailApiResponse) {
+    return Account(
+      id: accountDetailApiResponse.result.id,
+      description: accountDetailApiResponse.result.description,
+      amount: double.parse(accountDetailApiResponse.result.amount),
+      color: accountDetailApiResponse.result.color,
+      icon: accountDetailApiResponse.result.icon,
+      isActive: accountDetailApiResponse.result.isActive,
+      createdAt: accountDetailApiResponse.result.createdAt,
+      updatedAt: accountDetailApiResponse.result.updatedAt,
+      includeInBalance: accountDetailApiResponse.result.includeInBalance,
+    );
+  }
 }

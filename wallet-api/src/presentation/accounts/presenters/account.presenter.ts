@@ -39,12 +39,13 @@ export class AccountPresenter {
   includeInBalance: boolean;
 
   constructor(account: Account) {
+    console.log('account', account);
     this._id = account._id;
     this.description = account.description;
     this.amount = account.amount;
     this.color = account.color;
     this.icon = account.icon;
-    this.user = account.user._id;
+    this.user = account.user?._id || account.user?.toString();
     this.isActive = account.isActive;
     this.createdAt = account.createdAt;
     this.updatedAt = account.updatedAt;

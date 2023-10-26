@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:wallet_app/src/presentation/providers/accounts/account_total_balance_provider.dart';
-import 'package:wallet_app/src/presentation/utils/human_formats.dart';
+import 'package:wallet_app/src/presentation/presentation.dart';
 
 class TotalBalanceCardItem extends ConsumerStatefulWidget {
   const TotalBalanceCardItem({super.key});

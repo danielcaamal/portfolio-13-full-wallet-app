@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wallet_app/src/domain/domain.dart';
-import 'package:wallet_app/src/presentation/utils/utils.dart';
+import 'package:wallet_app/src/presentation/presentation.dart';
 
 class TransactionsListView extends StatelessWidget {
   final List<Transaction> transactions;

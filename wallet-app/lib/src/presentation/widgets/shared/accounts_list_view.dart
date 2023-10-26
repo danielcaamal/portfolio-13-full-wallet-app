@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:wallet_app/src/domain/domain.dart';
 import 'package:wallet_app/src/presentation/presentation.dart';
-import 'package:wallet_app/src/presentation/utils/utils.dart';
-import 'package:go_router/go_router.dart';
 
 class AccountsListView extends StatelessWidget {
   final List<Account> accounts;

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:wallet_app/src/presentation/presentation.dart';
-import 'package:wallet_app/src/presentation/utils/utils.dart';
 
 class HomeScreen extends StatelessWidget {
   static const name = 'home';

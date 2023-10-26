@@ -25,6 +25,15 @@ export class AccountsService {
     );
   };
 
+  findOneByUser = async (
+    account: string,
+    user: string,
+  ): Promise<AccountPresenter> => {
+    return new AccountPresenter(
+      await this.accountsUseCases.findOneByUser(account, user),
+    );
+  };
+
   create = async (
     account: CreateAccountDto,
     userFromToken?: User,
